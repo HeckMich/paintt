@@ -15,6 +15,11 @@ public class FrequencyAndDecibelCalculator {
             double imaginary = fftData[i * 2 + 1];
             double magnitude = Math.sqrt(real * real + imaginary * imaginary);
 
+
+            //Rauschunterdrückung
+            if (magnitude < 100){
+                magnitude = 0;
+            }
             if (magnitude > maxMagnitude){
                 maxMagnitude = magnitude;
                 maxIndex = i;
@@ -22,7 +27,7 @@ public class FrequencyAndDecibelCalculator {
         }
 
         double frequency = maxIndex * sampleRate / numSamples;
-        double decibel = 20 * Math.log10(maxMagnitude);
+        double decibel = 20 * Math.log10(maxMagnitude / 32768.0); //32768.0 = max. Sample wert für 16 Bit Samples.
 
         frequencyAndDecibel[0] = frequency;
         frequencyAndDecibel[1] = decibel;
