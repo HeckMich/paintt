@@ -35,7 +35,7 @@ javafx {
 }
 
 dependencies {
-
+    testImplementation 'org.testfx:testfx-junit5:4.0.17-alpha'
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
     implementation 'com.github.wendykierp:JTransforms:3.1'
