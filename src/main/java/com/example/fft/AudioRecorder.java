@@ -8,7 +8,7 @@ import java.io.IOException;
 public class AudioRecorder {
 
     public static byte[] recordAudio(int durationMillis) throws LineUnavailableException, IOException {
-        AudioFormat format = new AudioFormat(AudioFormat.Encoding.PCM_SIGNED, 48000, 16, 2, 4, 48000, false);
+        AudioFormat format = new AudioFormat(AudioFormat.Encoding.PCM_SIGNED, 48000, 16, 2, 4, 48000, false); //samplerate/framerate kann man auch auf 16000 setzen
         DataLine.Info info = new DataLine.Info(TargetDataLine.class, format);
 
         try {
