@@ -27,7 +27,7 @@ public class FrequencyAndDecibelCalculator {
         }
 
         double frequency = maxIndex * sampleRate / numSamples;
-        double decibel = 20 * Math.log10(maxMagnitude / 32768.0); //32768.0 = max. Sample wert für 16 Bit Samples.
+        double decibel = 20 * Math.log10(maxMagnitude / 32768.0); //32768.0 = max. Sample wert für 16 Bit Samples
 
         frequencyAndDecibel[0] = frequency;
         frequencyAndDecibel[1] = decibel;
