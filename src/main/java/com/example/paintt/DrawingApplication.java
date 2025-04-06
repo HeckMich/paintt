@@ -14,21 +14,28 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class DrawingApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        /**
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("paint.fxml"));
+
+        /*
+        FXMLLoader fxmlLoader = new FXMLLoader(DrawingApplication.class.getResource("com/example/paint/paint.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
-         **/
+
+         */
+
+
+
         Parent root = FXMLLoader.load(getClass().getResource("paint.fxml"));
 
         stage.setTitle("Paint app");
         stage.setScene(new Scene(root));
         stage.show();
+
+
     }
 
     public static void main(String[] args) {

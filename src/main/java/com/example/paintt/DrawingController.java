@@ -10,7 +10,6 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -19,7 +18,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class HelloController implements Initializable {
+public class DrawingController implements Initializable {
 
 
     @FXML
@@ -29,7 +28,7 @@ public class HelloController implements Initializable {
     private TextField bsize;
 
     @FXML
-    private Canvas canvas;
+    public Canvas canvas;
 
 
     boolean toolSelected = false;
