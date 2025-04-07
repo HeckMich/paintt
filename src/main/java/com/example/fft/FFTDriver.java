@@ -16,10 +16,6 @@ public class FFTDriver {
  */
 
 
-
-
-
-
         byte[] audioData = AudioRecorder.recordAudio(5000); //nimmt nur 5 Sekunden auf...
         double[] fftData = FFTAnalyzer.performFFT(audioData);
         double[] frequencyAndDecibel = FrequencyAndDecibelCalculator.calculateFrequencyAndDecibel(fftData, 44100);
