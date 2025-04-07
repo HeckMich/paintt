@@ -11,12 +11,19 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextField;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.embed.swing.SwingFXUtils;
+
 
 public class DrawingController implements Initializable {
 
@@ -103,6 +110,25 @@ public class DrawingController implements Initializable {
     @FXML
     public void toolselected(ActionEvent e) {
         toolSelected = true;
+    }
+
+    @FXML
+    public void saveCanvas(ActionEvent e){
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save Image");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PNG files (*.png)", "*.png"));
+        File file = fileChooser.showSaveDialog(canvas.getScene().getWindow());
+
+
+        if(file != null){
+            try{
+                WritableImage writableImage = canvas.snapshot(null, null);
+                ImageIO.write(SwingFXUtils.fromFXImage(writableImage, null), "png", file);
+
+            }catch (IOException ex){
+                ex.printStackTrace();
+            }
+        }
     }
 
 
