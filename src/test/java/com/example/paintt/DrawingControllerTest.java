@@ -11,9 +11,11 @@ import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.testfx.api.FxAssert;
 import org.testfx.api.FxRobot;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
+import org.testfx.matcher.control.LabeledMatchers;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -33,6 +35,26 @@ public class DrawingControllerTest {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    @Test
+    void brushShouldHaveText(FxRobot robot){
+        Button brushButton = robot.lookup("Brush").queryAs(Button.class);
+
+        //funktioniert auf mehrere Arten
+        FxAssert.verifyThat(brushButton, LabeledMatchers.hasText("Brush")); //mit Button selbst
+        FxAssert.verifyThat(".button", LabeledMatchers.hasText("Brush")); //mit css class
+        FxAssert.verifyThat("#toolselected", LabeledMatchers.hasText("Brush")); //mit css id
+
+    }
+
+    @Test
+    void clickBrushTool(FxRobot robot){
+        Button brushButton = robot.lookup("Brush").queryAs(Button.class);
+        robot.clickOn(brushButton);
+
+        assertTrue(controller.toolSelected);
+
     }
 
 
